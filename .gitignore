@@ -25,4 +25,5 @@ temp/
 *.log
 .classpath
 .devcontainer
-.java-version
+.java-version.venv
+.venv/
