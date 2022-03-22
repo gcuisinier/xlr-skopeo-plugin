@@ -11,6 +11,10 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 
 
+nebulaRelease {
+  Set<String> releaseBranchPatterns = [/master/, /HEAD/, /main/, /(release(-|\/))?\d+(\.\d+)?\.x/, /v?\d+\.\d+\.\d+/] as Set
+
+}
 
 license {
   header rootProject.file('LICENSE.md')
