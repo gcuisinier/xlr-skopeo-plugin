@@ -21,6 +21,31 @@ import com.xebialabs.xlrelease.plugin.ansible.RemoteScript as RemoteScript
 from skopeo.SkopeoRunner import SkopeoRunner
 
 
+if source_registry is None:
+    if source_registry_name is None:
+        print "Source Registry or Source Registry name should be configured"
+        sys.exit(-1)
+    else:
+        skopeoRegistries = configurationApi.searchByTypeAndTitle("skopeo.Registry", source_registry_name)
+        if len(self.skopeoRegistries) == 1:
+            source_registry = skopeoRegistries[0]
+        else:
+            print "Error : Cannot find Skopeo Registry by name " + source_registry_name
+            sys.exit(-1)
+
+if target_registry is None:
+    if target_registry_name is None:
+        print "Target Registry or Target Registry name should be configured"
+        sys.exit(-1)
+    else:
+        skopeoRegistries = configurationApi.searchByTypeAndTitle("skopeo.Registry", target_registry_name)
+        if len(self.skopeoRegistries) == 1:
+            target_registry = skopeoRegistries[0]
+        else:
+            print "Error : Cannot find Skopeo Registry by name " + source_registry_name
+            sys.exit(-1)
+
+
 skopeoRun = SkopeoRunner(source_registry, source_image, target_registry, target_image, host, skopeo_bin)
 
 

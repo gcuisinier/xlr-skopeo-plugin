@@ -12,6 +12,8 @@
      <type type="skopeo.Registry" extends="configuration.HttpConnection">
             <property name="registryUrl" required="true"  label="Registry URL" />
             <property name="token" required="true" password="true" label="Registry Token" description="A  access token for the Registry"/>
+            <property name="scriptLocation" hidden="true" default="skopeo/SkopeoTestConnection.py"/>
+
     </type>
 
 
@@ -27,9 +29,12 @@
   <property name="host" kind="ci" required="false" referenced-type="host.Unix" category="input" description="Host on which skopeo is available"/>
 
     <property name="source_registry" category="input" kind="ci" referenced-type="skopeo.Registry" label="Source Registry"/>
+    <property name="source_registry_name" category="input" label="Source registry configuration name"/>
     <property name="source_image" category="input" required="true"  label="Source image" />
+
     <property name="target_registry" category="input" kind="ci" referenced-type="skopeo.Registry" label="Target Registry"/>
-    <property name="target_image" category="input" required="true"  label="Source image" />
+    <property name="target_registry_name" category="input" label="Target registry configuration name"/>
+    <property name="target_image" category="input" required="true"  label="Target image" />
     <property name="skopeo_bin" category="input" required="false"  label="(Optionnal) path to skopeo" default="skopeo" />
 
 
